@@ -21,6 +21,7 @@
 }
 
 .modal-window .modal-window__cross {
+  font: 16px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: absolute;
   color: #fff;
   background: #000;
