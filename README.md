@@ -2,6 +2,7 @@
 
 1. Подключение скриптов и стилей:
 
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +15,26 @@
     
 </head>
     <body>
+        <!-- Окно вставляется перед всеми элементами -->
+        
+        <!-- Остальной документ -->
 
     </body>
 </html>
+```
 
 2. Открытие модального окна:
 
-modalWindow.showModalWindow(width, height, measureType, content); 
+```modalWindow.showModalWindow(width, height, measureType, content);```
 
+```
 //width - ширина модального окна
 //height - высота модального окна
 //measureType - единица измерения для width и height (px, % и т.д.)
 //content - содержимое окна (html)
 //Например modalWindow.showModalWindow('70', '30', '%', html);
+```
 
 3. Закрытие модального окна:
 
-modalWindow.closeModalWindow();
+```modalWindow.closeModalWindow();```
