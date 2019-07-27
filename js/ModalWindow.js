@@ -1,14 +1,14 @@
 ;(function() {
+    'use strict';
 
-    var modalWindow = {};
+    let modalWindow = {};
     
     // Получаем код стилей модального окна для центрирования по горизонтали и вертикали
     function getCenterWindowStyles(width, height, measureType) {
-        
-        var styles = '';
 
-        var clientWidth = document.documentElement.clientWidth;
-        var clientHeight = document.documentElement.clientHeight;
+        const clientWidth = document.documentElement.clientWidth;
+        const clientHeight = document.documentElement.clientHeight;
+        let widthInPx, heightInPx;
 
         if( measureType == '%' ) {
 
@@ -28,16 +28,16 @@
 
         }
 
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        var top = scrollTop + clientHeight/2 - heightInPx/2;
-        var left = clientWidth/2 - widthInPx/2;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const top = scrollTop + clientHeight/2 - heightInPx/2;
+        const left = clientWidth/2 - widthInPx/2;
 
-        styles = `top: ${top}px;
-                  left: ${left}px;
-                  width: ${widthInPx}px;
-                  height: ${heightInPx}px;
-                  max-width: ${clientWidth}px;
-                  max-height: ${clientHeight}px;`;
+        const styles = `top: ${top}px;
+                        left: ${left}px;
+                        width: ${widthInPx}px;
+                        height: ${heightInPx}px;
+                        max-width: ${clientWidth}px;
+                        max-height: ${clientHeight}px;`;
 
         return styles;
         
@@ -45,11 +45,10 @@
     
     // Получаем код стилей положения крестика
     function getCrossStyles(width, height, measureType) {
-        
-        var styles = '';
 
-        var clientWidth = document.documentElement.clientWidth;
-        var clientHeight = document.documentElement.clientHeight;
+        const clientWidth = document.documentElement.clientWidth;
+        const clientHeight = document.documentElement.clientHeight;
+        let widthInPx, heightInPx;
 
         if( measureType == '%' ) {
 
@@ -69,12 +68,12 @@
 
         }
 
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        var top = scrollTop + clientHeight/2 - heightInPx/2 - 12;
-        var left = clientWidth/2 + widthInPx/2 - 12;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const top = scrollTop + clientHeight/2 - heightInPx/2 - 12;
+        const left = clientWidth/2 + widthInPx/2 - 12;
 
-        styles = `top: ${top}px;
-                  left: ${left}px;`;
+        const styles = `top: ${top}px;
+                        left: ${left}px;`;
 
         return styles;
         
@@ -94,20 +93,20 @@
     //content - содержимое окна (html)
     function showModalWindow(width, height, measureType, content) {
 
-        var modalWindowDiv = document.createElement('div');
+        const modalWindowDiv = document.createElement('div');
         modalWindowDiv.setAttribute('id', 'modalWindow');
         modalWindowDiv.setAttribute('class', 'modal-window');
 
-        var body = document.body;
+        const body = document.body;
         body.insertBefore(modalWindowDiv, body.firstChild);
         
-        var modalWindow = document.getElementById('modalWindow');
+        const modalWindow = document.getElementById('modalWindow');
 
-        html = `<div class="modal-window__overlay" onclick="modalWindow.closeModalWindow();"></div>
-                    <div class="modal-window__content" style="${getCenterWindowStyles(width, height, measureType)}">
-                        ${content}
-                    </div>
-                <div class="modal-window__cross" onclick="modalWindow.closeModalWindow();" style="${getCrossStyles(width, height, measureType)}">X</div>`;
+        const html = `<div class="modal-window__overlay" onclick="modalWindow.closeModalWindow();"></div>
+                        <div class="modal-window__content" style="${getCenterWindowStyles(width, height, measureType)}">
+                            ${content}
+                        </div>
+                      <div class="modal-window__cross" onclick="modalWindow.closeModalWindow();" style="${getCrossStyles(width, height, measureType)}">X</div>`;
 
         modalWindow.innerHTML = html;        
     }
